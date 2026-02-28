@@ -1,6 +1,6 @@
 context:
   name: lerna
-  version: "2.0.2"
+  version: "2.0.3"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 37b28573a6605a72ff64a1d8d4554af64d7f640db076d0ad4a7ff29d3ea15278
+  sha256: 1ee698095b3bdc540ba75143026d9df16bb466daf7031926d8ff92c0e5e31dee
 
 build:
   number: 0
@@ -40,7 +40,7 @@ requirements:
     - hatch-rs
     - if: is_abi3
       then:
-      - python-abi3
+        - python-abi3
   run:
     - python
     - omegaconf >=2.2.3,<2.4
