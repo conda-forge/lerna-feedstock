@@ -1,6 +1,6 @@
 context:
   name: lerna
-  version: "2.0.3"
+  version: "2.0.4"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 1ee698095b3bdc540ba75143026d9df16bb466daf7031926d8ff92c0e5e31dee
+  sha256: 0d49c952678366744fc1ec23b53465487172eaa85e27bd00ca7fd409fac4a87b
 
 build:
   number: 0
