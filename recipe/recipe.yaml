@@ -1,6 +1,6 @@
 context:
   name: lerna
-  version: "2.0.4"
+  version: "2.1.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 0d49c952678366744fc1ec23b53465487172eaa85e27bd00ca7fd409fac4a87b
+  sha256: 2a808e0154a23bab44798fb3c3cd45b4a45afa3b906758cc7db0762bb62ba979
 
 build:
   number: 0
@@ -45,16 +45,22 @@ requirements:
     - python
     - omegaconf >=2.2.3,<2.4
     - packaging
-  ignore_run_exports:
-    from_package:
-      - cross-python_${{ target_platform }}
 
 tests:
   - python:
       imports:
         - lerna
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - abi3audit
+    script:
+      - if: unix
+        then: abi3audit $SP_DIR/lerna/lerna.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
+        else: abi3audit %SP_DIR%/lerna/lerna.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
 
 about:
   license: Apache-2.0
