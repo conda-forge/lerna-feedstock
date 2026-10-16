@@ -37,13 +37,13 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-rs
+    - hatch-rs >=0.1.4
     - if: is_abi3
       then:
         - python-abi3
   run:
     - python
-    - omegaconf >=2.2.3,<2.4
+    - omegaconf >=2.2.3,<3
     - packaging
 
 tests:
